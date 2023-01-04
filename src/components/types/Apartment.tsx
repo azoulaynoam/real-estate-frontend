@@ -4,7 +4,7 @@ type Apartment = {
   images: {
     path: string;
   }[];
-  _id: ObjectId;
+  _id: ObjectId | string;
   action: string;
   free_text_en?: string;
   free_text_he?: string;
@@ -15,7 +15,6 @@ type Apartment = {
   price: number;
   status: boolean;
   video?: string;
-  id: number;
   __v: number;
 };
 
