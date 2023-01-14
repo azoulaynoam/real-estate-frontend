@@ -1,0 +1,70 @@
+.admin-panel {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.apartment-panel {
+  background-color: rgba(0, 189, 203, 0.664);
+  width: 100rem;
+  height: 60rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.apartments-filter {
+  display: flex;
+  flex-direction: column;
+}
+
+.apartments-filter__item {
+  padding: 5px;
+  font-size: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.apartments-filter__item label {
+  margin-right: 5px;
+  color: #f0f8ff;
+}
+
+.apartment-panel h1 {
+  color: #f0f8ff;
+  shadow: 0 0 10px #f0f8ff;
+}
+
+.apartments__table {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: auto;
+  border-collapse: collapse;
+}
+
+.apartments__table__header {
+  grid-column: 1 / 4;
+}
+
+.apartments__table__header__item {
+  display: inline-grid;
+  grid-column: 1 / 4;
+  border: 1px solid black;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.apartments__table__row {
+  grid-column: 1 / 4;
+}
+
+.apartments__table__row__item {
+  display: inline-grid;
+  border: 1px solid black;
+  padding: 5px;
+}

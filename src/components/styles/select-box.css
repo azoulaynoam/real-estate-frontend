@@ -1,0 +1,59 @@
+:root {
+  --min-width: 80px;
+}
+
+.selectBox {
+  display: flex;
+  flex-direction: column;
+  min-width: var(--min-width);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 5px;
+}
+
+.selected > .animated-arrow {
+  transform: rotate(180deg);
+}
+
+.options {
+  border-radius: 5px;
+  z-index: 100;
+  margin-top: 35px;
+  position: absolute;
+  display: none;
+  background-color: #fff;
+  min-width: var(--min-width);
+}
+
+.option {
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.option-selected {
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.option-selected {
+  border-radius: 5px;
+  background-color: #f0f8ff;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background-color: #f0f8ff;
+}

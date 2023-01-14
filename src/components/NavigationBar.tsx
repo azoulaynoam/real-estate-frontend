@@ -1,6 +1,7 @@
 import React from "react";
 import i18n from "./translator";
 import "./styles/navigation-bar.css";
+import { US, IL } from "country-flag-icons/react/1x1";
 
 class NavigationBar extends React.Component {
   state: {
@@ -16,36 +17,53 @@ class NavigationBar extends React.Component {
     };
   }
 
-  nav_link = (props: { link: string; text: string }) => {
+  nav_link = (props: { link: string; text: string; isMobile: boolean }) => {
     return (
-      <div className="nav-link" onClick={this.menuClicked}>
+      <div
+        className="nav-link"
+        onClick={props.isMobile ? this.menuClicked : () => {}} // if mobile, close menu after click
+      >
         <a href={props.link}>{props.text}</a>
       </div>
     );
   };
 
-  links_wrapper = (
-    <div className="links-wrapper" style={{ direction: i18n.dir() }}>
+  links_wrapper = (isMobile: boolean = false) => (
+    <div
+      className="links-wrapper"
+      style={{ direction: i18n.dir() }}
+      id={isMobile ? "links-wrapper-mobile" : "links-wrapper-desktop"}
+    >
       <div className="links">
-        {this.nav_link({ link: "#hero-section", text: i18n.t("home") })}
-        {this.nav_link({ link: "#about-me", text: i18n.t("about-me") })}
+        {this.nav_link({
+          link: "#hero-section",
+          text: i18n.t("home"),
+          isMobile,
+        })}
+        {this.nav_link({
+          link: "#about-me",
+          text: i18n.t("about-me"),
+          isMobile,
+        })}
         {this.nav_link({
           link: "#apartment-search-section",
           text: i18n.t("apartments"),
+          isMobile,
         })}
       </div>
       <div className="languages">
-        <select
-          title="Select language"
-          onChange={(e) => {
-            i18n.changeLanguage(e.target.value);
+        <US
+          onClick={(e) => {
+            i18n.changeLanguage("en");
             window.location.reload();
           }}
-          value={i18n.language}
-        >
-          <option value="he">עברית</option>
-          <option value="en">English</option>
-        </select>
+        />
+        <IL
+          onClick={(e) => {
+            i18n.changeLanguage("he");
+            window.location.reload();
+          }}
+        />
       </div>
     </div>
   );
@@ -53,12 +71,17 @@ class NavigationBar extends React.Component {
   menuClicked = () => {
     this.setState({
       showMenu: !this.state.showMenu,
-      hideNavigationBar: !this.state.hideNavigationBar,
     });
-    if (this.state.hideNavigationBar) {
-      window.addEventListener("scroll", this.handleScroll);
-    } else {
+    if (this.state.showMenu) {
       window.removeEventListener("scroll", this.handleScroll);
+      document
+        .getElementById("links-wrapper-mobile")
+        ?.setAttribute("style", "display: flex");
+    } else {
+      window.addEventListener("scroll", this.handleScroll);
+      document
+        .getElementById("links-wrapper-mobile")
+        ?.setAttribute("style", "display: none");
     }
   };
 
@@ -120,12 +143,11 @@ class NavigationBar extends React.Component {
             </div>
           </div>
           <div className="right-column">
-            {window.innerWidth > 800 ? this.links_wrapper : this.menuButton}
+            {this.links_wrapper(false)}
+            {this.menuButton}
           </div>
         </div>
-        {window.innerWidth <= 800 && this.state.showMenu
-          ? this.links_wrapper
-          : null}
+        {this.links_wrapper(true)}
       </div>
     );
   }

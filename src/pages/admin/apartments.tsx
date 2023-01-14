@@ -1,6 +1,9 @@
 import React from "react";
 import Apartment from "../../components/types/Apartment";
-import "./styles/apartemnts.css";
+import ImageSlider from "../../components/ImageSlider";
+import "./styles/apartments.css";
+import SelectBox from "../../components/SelectBox";
+import Background from "../../components/Background";
 
 class Main extends React.Component {
   state: { apartments: Apartment[] } = {
@@ -19,47 +22,95 @@ class Main extends React.Component {
         status: true,
         video: "https://www.youtube.com/watch?v=Q8TXgCzxEnw",
         __v: 0,
-      }
-    ], 
-  }
+      },
+      {
+        images: [],
+        _id: "5f9b1b0b0b1b1b1b1b1b1b1b",
+        action: "sale",
+        free_text_en: "This is a test apartment",
+        free_text_he: "זה דירה מבחן",
+        rooms: 3,
+        bedrooms: 2,
+        bathrooms: 1,
+        size: 100,
+        price: 100000,
+        status: true,
+        video: "https://www.youtube.com/watch?v=Q8TXgCzxEnw",
+        __v: 0,
+      },
+    ],
+  };
 
   render() {
     return (
       <div className="admin-panel">
+        <Background />
         <div className="apartment-panel">
-            <h1 accessabiliy-label="test">Apartments</h1>
-            <div className="apartments">
-              <table>
-                <tr>
-                  <th>Apartment</th>
-                  <th>Price</th>
-                  <th>Location</th>
-                  <th>Size</th>
-                  <th>Rooms</th>
-                  <th>Bedrooms</th>
-                  <th>Bathrooms</th>
-                  <th>Actions</th>
-                </tr>
-                {
-                  this.state.apartments.map((apartment) => {
-                    return (
-                      <tr>
-                        <td>{apartment.price}</td>
-                        <td>{apartment.free_text_en}</td>
-                        <td>{apartment.free_text_he}</td>
-                        <td>{apartment.rooms}</td>
-                        <td>{apartment.bedrooms}</td>
-                        <td>{apartment.bathrooms}</td>
-                        <td>
-                          <button>Edit</button>
-                          <button>Delete</button>
-                        </td>
-                      </tr>
-                    );
-                  })
-                }
-              </table>
+          <h1>Apartments</h1>
+          <div className="apartments-filter-hidder">
+            <button>Filter</button>
+          </div>
+          <div className="apartments-filter">
+            <div className="apartments-filter__item">
+              <label htmlFor="apartments-filter__item__action">Action</label>
             </div>
+            <div className="apartments-filter__item">
+              <label htmlFor="apartments-filter__item__status">Status</label>
+            </div>
+          </div>
+          <div className="apartments__table">
+            <div className="apartments__table__header">
+              <div className="apartments__table__header__item">Media</div>
+              <div className="apartments__table__header__item">Price</div>
+              <div className="apartments__table__header__item">
+                English Description
+              </div>
+              <div className="apartments__table__header__item">
+                Hebrew Description
+              </div>
+              <div className="apartments__table__header__item">
+                Number of rooms
+              </div>
+              <div className="apartments__table__header__item">
+                Number of bedrooms
+              </div>
+              <div className="apartments__table__header__item">
+                Number of bathrooms
+              </div>
+              <div className="apartments__table__header__item">Actions</div>
+            </div>
+            {this.state.apartments.map((apartment) => {
+              return (
+                <div className="apartments__table__row">
+                  <div className="apartments__table__row__item">
+                    <ImageSlider apartment={apartment}></ImageSlider>
+                  </div>
+                  <div className="apartments__table__row__item">
+                    {apartment.price}
+                  </div>
+                  <div className="apartments__table__row__item">
+                    {apartment.free_text_en}
+                  </div>
+                  <div className="apartments__table__row__item">
+                    {apartment.free_text_he}
+                  </div>
+                  <div className="apartments__table__row__item">
+                    {apartment.rooms}
+                  </div>
+                  <div className="apartments__table__row__item">
+                    {apartment.bedrooms}
+                  </div>
+                  <div className="apartments__table__row__item">
+                    {apartment.bathrooms}
+                  </div>
+                  <div className="apartments__table__row__item">
+                    <button>Edit</button>
+                    <button>Delete</button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );

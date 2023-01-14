@@ -27,11 +27,11 @@
 }
 
 .top-heading-rtl {
-  margin-left: "10vw";
+  margin-left: 150px;
 }
 
 .top-heading-ltr {
-  margin-right: "10vw";
+  margin-right: 10vw;
 }
 
 .top-heading-rtl,
@@ -47,13 +47,13 @@
 }
 
 .bottom-heading-rtl {
-  margin-top: 10px;
-  margin-left: 10vw;
+  margin-top: 30px;
+  margin-right: 10vw;
 }
 
 .bottom-heading-ltr {
   margin-top: 10px;
-  margin-right: 10vw;
+  margin-left: 10vw;
 }
 
 @media only screen and (max-width: 800px) {

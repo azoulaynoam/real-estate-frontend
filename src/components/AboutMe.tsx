@@ -27,54 +27,14 @@ class AboutMe extends React.Component {
         >
           <div className="visabillity">
             <div
-              className="card"
-              style={{
-                position: this.state.contentVisible ? "static" : "absolute",
-                width: this.state.contentVisible
-                  ? this.state.isDesktop
-                    ? "1250px"
-                    : "90vw"
-                  : this.state.isDesktop
-                  ? "350px"
-                  : i18n.dir() === "rtl"
-                  ? "29vh"
-                  : "23vh",
-                height: this.state.contentVisible
-                  ? this.state.isDesktop
-                    ? "350px"
-                    : i18n.dir() === "rtl"
-                    ? "70vh"
-                    : "80vh"
-                  : this.state.isDesktop
-                  ? "350px"
-                  : i18n.dir() === "rtl"
-                  ? "29vh"
-                  : "23vh",
-                borderRadius: this.state.isDesktop
-                  ? ""
-                  : this.state.contentVisible
-                  ? "30px"
-                  : "150px",
-                transition: this.state.isDesktop
-                  ? "all 1s linear"
-                  : "all 0.6s linear",
-                flexDirection: this.state.isDesktop
-                  ? i18n.dir() === "rtl"
-                    ? "row-reverse"
-                    : "row"
-                  : "column",
-              }}
+              className={
+                "card " +
+                (this.state.contentVisible ? "opened " : "closed ") +
+                i18n.dir()
+              }
             >
-              <div className="image">
+              <div className="profile">
                 <img
-                  style={{
-                    transform: i18n.dir() === "rtl" ? "scaleX(-1)" : "",
-                    height: this.state.isDesktop
-                      ? "330px"
-                      : i18n.dir() === "rtl"
-                      ? "27vh"
-                      : "22vh",
-                  }}
                   src="./images/profile.jpg"
                   alt="Samantha Azoulay, Owner."
                 />

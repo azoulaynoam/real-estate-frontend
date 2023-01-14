@@ -106,28 +106,11 @@
   margin-top: 15px;
 }
 
-.languages select {
-  background-color: transparent;
-  color: white;
-  font-family: "Rubik", sans-serif;
-  font-size: 15pt;
-  border-color: white;
-  border-radius: 5px;
-  border-width: 1px;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-}
-.languages option {
-  background-color: #82caff;
-  color: white;
-  font-family: "Rubik", sans-serif;
-  font-size: 15pt;
-  border-color: white;
-  border-radius: 3px;
-  margin: 5px;
-  align-items: center;
-  justify-content: center;
+.languages svg {
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
+  cursor: pointer;
 }
 
 .nav-link a {
@@ -141,6 +124,10 @@
 .nav-link a:hover {
   color: #10123c;
   letter-spacing: 2px;
+}
+
+#links-wrapper-mobile {
+  display: none;
 }
 
 @media only screen and (max-width: 800px) {
@@ -208,6 +195,10 @@
     height: 100%;
     width: 100%;
     padding: 20vh 0 60vh 0;
+  }
+
+  #links-wrapper-desktop {
+    display: none;
   }
 
   .nav-link {

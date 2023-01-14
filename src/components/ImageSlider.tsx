@@ -13,7 +13,7 @@ class ImageSlider extends React.Component<ImageSliderType> {
     index: number;
   };
 
-  constructor(props: { apartment: Apartment }) {
+  constructor(props: { apartment: Apartment; width?: number }) {
     super(props);
     this.state = {
       apartment: props.apartment,
