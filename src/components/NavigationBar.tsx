@@ -30,8 +30,7 @@ class NavigationBar extends React.Component {
 
   links_wrapper = (isMobile: boolean = false) => (
     <div
-      className="links-wrapper"
-      style={{ direction: i18n.dir() }}
+      className={"links-wrapper " + i18n.dir()}
       id={isMobile ? "links-wrapper-mobile" : "links-wrapper-desktop"}
     >
       <div className="links">

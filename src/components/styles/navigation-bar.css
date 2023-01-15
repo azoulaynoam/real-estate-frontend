@@ -197,6 +197,14 @@
     padding: 20vh 0 60vh 0;
   }
 
+  .links-wrapper.rtl {
+    direction: rtl;
+  }
+
+  .links-wrapper.ltr {
+    direction: ltr;
+  }
+
   #links-wrapper-desktop {
     display: none;
   }
