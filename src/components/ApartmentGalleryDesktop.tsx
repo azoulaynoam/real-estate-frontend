@@ -34,7 +34,7 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
       lang = i18n.language;
     }
     return (
-      <div className={`apartment_` + props.apartment._id}>
+      <div className="apartment" id={String(props.apartment._id)}>
         <div className="left">
           <ImageSlider apartment={props.apartment} />
         </div>
@@ -107,6 +107,7 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
       );
       apartmentCounter++;
     }
+
     return (
       <div className="gallery">
         <div className="left arrow" onClick={this.leftArrow}>

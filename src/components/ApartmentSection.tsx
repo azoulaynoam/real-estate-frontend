@@ -6,7 +6,6 @@ import ApartmentGalleryDesktop from "./ApartmentGalleryDesktop";
 import UnderMaintenance from "./UnderMaintenance";
 import "./styles/apartment-section.css";
 import Apartment from "./types/Apartment";
-
 class ApartmentSection extends React.Component {
   state: {
     apartments: Apartment[];
@@ -20,7 +19,7 @@ class ApartmentSection extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get("https://realestate-in-israel.com/properties")
+    Axios.get(process.env.REACT_APP_SERVER_URL + "properties")
       .then((res) => {
         if (Array.isArray(res.data)) {
           this.setState({ apartments: res.data as Apartment[] });
@@ -29,7 +28,6 @@ class ApartmentSection extends React.Component {
         }
       })
       .catch((err) => {
-        console.log(err);
         this.setState({ apartments: [] as Apartment[] });
       });
   }

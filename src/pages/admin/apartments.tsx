@@ -2,44 +2,18 @@ import React from "react";
 import Apartment from "../../components/types/Apartment";
 import ImageSlider from "../../components/ImageSlider";
 import "./styles/apartments.css";
-import SelectBox from "../../components/SelectBox";
 import Background from "../../components/Background";
 
 class Main extends React.Component {
   state: { apartments: Apartment[] } = {
-    apartments: [
-      {
-        images: [],
-        _id: "5f9b1b0b0b1b1b1b1b1b1b1b",
-        action: "sale",
-        free_text_en: "This is a test apartment",
-        free_text_he: "זה דירה מבחן",
-        rooms: 3,
-        bedrooms: 2,
-        bathrooms: 1,
-        size: 100,
-        price: 100000,
-        status: true,
-        video: "https://www.youtube.com/watch?v=Q8TXgCzxEnw",
-        __v: 0,
-      },
-      {
-        images: [],
-        _id: "5f9b1b0b0b1b1b1b1b1b1b1b",
-        action: "sale",
-        free_text_en: "This is a test apartment",
-        free_text_he: "זה דירה מבחן",
-        rooms: 3,
-        bedrooms: 2,
-        bathrooms: 1,
-        size: 100,
-        price: 100000,
-        status: true,
-        video: "https://www.youtube.com/watch?v=Q8TXgCzxEnw",
-        __v: 0,
-      },
-    ],
+    apartments: [],
   };
+
+  componentDidMount(): void {
+    fetch(process.env.REACT_APP_SERVER_URL + "properties")
+      .then((res) => res.json())
+      .then((apartments: Apartment[]) => this.setState({ apartments }));
+  }
 
   render() {
     return (
