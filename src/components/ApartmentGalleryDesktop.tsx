@@ -14,6 +14,7 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
     apartments: Apartment[];
     index: number;
   };
+
   constructor(props: { apartments: Apartment[] }) {
     super(props);
     this.state = {
@@ -34,7 +35,11 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
       lang = i18n.language;
     }
     return (
-      <div className="apartment" id={String(props.apartment._id)}>
+      <div
+        className="apartment"
+        id={String(props.apartment._id)}
+        key={String(props.apartment._id)}
+      >
         <div className="left">
           <ImageSlider apartment={props.apartment} />
         </div>
@@ -96,17 +101,18 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
   };
 
   render() {
-    const apartments = [];
+    const apartments: JSX.Element[] = [];
     let apartmentCounter = 0;
-    for (const apartment of this.state.apartments) {
+
+    this.state.apartments.forEach((apartment: Apartment) => {
       apartments.push(
         <this.apartment
           index={apartmentCounter}
           apartment={apartment}
         ></this.apartment>
       );
-      apartmentCounter++;
-    }
+    });
+    apartmentCounter++;
 
     return (
       <div className="gallery">

@@ -2,7 +2,6 @@ import React from "react";
 import Apartment from "../../components/types/Apartment";
 import ImageSlider from "../../components/ImageSlider";
 import "./styles/apartments.css";
-import Background from "../../components/Background";
 
 class Main extends React.Component {
   state: { apartments: Apartment[] } = {
@@ -18,7 +17,6 @@ class Main extends React.Component {
   render() {
     return (
       <div className="admin-panel">
-        <Background />
         <div className="apartment-panel">
           <h1>Apartments</h1>
           <div className="apartments-filter-hidder">
@@ -55,7 +53,10 @@ class Main extends React.Component {
             </div>
             {this.state.apartments.map((apartment) => {
               return (
-                <div className="apartments__table__row">
+                <div
+                  className="apartments__table__row"
+                  key={String(apartment._id)}
+                >
                   <div className="apartments__table__row__item">
                     <ImageSlider apartment={apartment}></ImageSlider>
                   </div>

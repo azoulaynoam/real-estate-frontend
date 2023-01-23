@@ -2,6 +2,7 @@ import React from "react";
 import Login from "./login";
 import Apartments from "./apartments";
 import Axios from "axios";
+import Background from "../../components/Background";
 
 class Main extends React.Component {
   state: {
@@ -20,14 +21,19 @@ class Main extends React.Component {
   }
 
   render() {
-    return this.state.loggedIn ? (
-      <Apartments />
-    ) : (
-      <Login
-        loggedIn={(loggedIn: boolean) => {
-          this.setState({ loggedIn });
-        }}
-      />
+    return (
+      <div className="admin-panel">
+        <Background />
+        {this.state.loggedIn ? (
+          <Apartments />
+        ) : (
+          <Login
+            loggedIn={(loggedIn: boolean) => {
+              this.setState({ loggedIn });
+            }}
+          />
+        )}
+      </div>
     );
   }
 }
