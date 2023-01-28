@@ -20,9 +20,7 @@ class IconWithValue extends React.Component<IconWithValueType> {
           <div className="value">
             <b>{this.props.value}</b>
           </div>
-          <div className="icon">
-            <i className={this.props.icon}></i>
-          </div>
+          <i className={this.props.icon}></i>
         </div>
       </Tooltip>
     );

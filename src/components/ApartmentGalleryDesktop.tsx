@@ -3,19 +3,19 @@ import i18n from "./translator";
 import IconWithValue from "./IconWithValue";
 import ImageSlider from "./ImageSlider";
 import "./styles/apartment-gallery-desktop.css";
-import Apartment from "./types/Apartment";
+import IApartment from "./interfaces/IApartment";
 
 interface ApartmentGalleryDesktopType {
-  apartments: Apartment[];
+  apartments: IApartment[];
 }
 
 class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopType> {
   state: {
-    apartments: Apartment[];
+    apartments: IApartment[];
     index: number;
   };
 
-  constructor(props: { apartments: Apartment[] }) {
+  constructor(props: { apartments: IApartment[] }) {
     super(props);
     this.state = {
       apartments: props.apartments,
@@ -27,7 +27,7 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
     return price.toLocaleString() + " ₪";
   }
 
-  apartment = (props: { apartment: Apartment; index: number }) => {
+  apartment = (props: { apartment: IApartment; index: number }) => {
     let lang;
     try {
       lang = i18n.language.split("-")[0];
@@ -104,7 +104,7 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
     const apartments: JSX.Element[] = [];
     let apartmentCounter = 0;
 
-    this.state.apartments.forEach((apartment: Apartment) => {
+    this.state.apartments.forEach((apartment: IApartment) => {
       apartments.push(
         <this.apartment
           index={apartmentCounter}

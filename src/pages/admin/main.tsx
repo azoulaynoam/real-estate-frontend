@@ -1,15 +1,19 @@
 import React from "react";
 import Login from "./login";
 import Apartments from "./apartments";
+import Apartment from "./apartment";
 import Axios from "axios";
 import Background from "../../components/Background";
 
 class Main extends React.Component {
   state: {
     loggedIn: boolean;
+    menu: "apartments" | "apartment";
   } = {
     loggedIn: false,
+    menu: "apartments",
   };
+
   componentDidMount(): void {
     Axios.get(process.env.REACT_APP_SERVER_URL + "login", {
       withCredentials: true,
@@ -25,7 +29,11 @@ class Main extends React.Component {
       <div className="admin-panel">
         <Background />
         {this.state.loggedIn ? (
-          <Apartments />
+          this.state.menu === "apartments" ? (
+            <Apartments />
+          ) : (
+            <Apartment />
+          )
         ) : (
           <Login
             loggedIn={(loggedIn: boolean) => {

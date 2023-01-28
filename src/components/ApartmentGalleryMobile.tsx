@@ -3,19 +3,19 @@ import i18n from "./translator";
 import ImageSlider from "./ImageSlider";
 import IconWithValue from "./IconWithValue";
 import "./styles/apartment-gallery-mobile.css";
-import Apartment from "./types/Apartment";
+import IApartment from "./interfaces/IApartment";
 
 interface ApartmentGalleryMobileType {
-  apartments: Apartment[];
+  apartments: IApartment[];
 }
 
 class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType> {
   state: {
-    apartments: Apartment[];
+    apartments: IApartment[];
     index: number;
   };
 
-  constructor(props: { apartments: Apartment[] }) {
+  constructor(props: { apartments: IApartment[] }) {
     super(props);
     this.state = {
       apartments: props.apartments,

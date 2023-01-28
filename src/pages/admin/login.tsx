@@ -2,8 +2,12 @@ import React from "react";
 import Axios from "axios";
 import "./styles/login.css";
 
-class Main extends React.Component<{ loggedIn: (loggedIn: boolean) => void }> {
-  state = {
+class Login extends React.Component<{ loggedIn: (loggedIn: boolean) => void }> {
+  state: {
+    username: string;
+    password: string;
+    errorMessage?: string;
+  } = {
     username: "",
     password: "",
   };
@@ -27,9 +31,10 @@ class Main extends React.Component<{ loggedIn: (loggedIn: boolean) => void }> {
     )
       .then((res) => {
         if (res.status === 200) this.loginState(true);
+        else this.setState({ errorMessage: "Wrong username or password" });
       })
       .catch((err) => {
-        console.log(err);
+        this.setState({ errorMessage: "Wrong username or password" });
       });
   };
 
@@ -72,10 +77,13 @@ class Main extends React.Component<{ loggedIn: (loggedIn: boolean) => void }> {
               </button>
             </form>
           </div>
+          <div className="error-message">
+            {this.state.errorMessage ? <b>{this.state.errorMessage}</b> : null}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-export default Main;
+export default Login;

@@ -1,10 +1,7 @@
 import { ObjectId } from "mongoose";
 
-type Apartment = {
-  images: {
-    path: string;
-  }[];
-  _id: ObjectId | string;
+type IApartment = {
+  _id?: ObjectId | string;
   action: string;
   free_text_en?: string;
   free_text_he?: string;
@@ -15,7 +12,10 @@ type Apartment = {
   price: number;
   status: boolean;
   video?: string;
+  images: {
+    path: string;
+  }[];
   __v: number;
 };
 
-export default Apartment;
+export default IApartment;

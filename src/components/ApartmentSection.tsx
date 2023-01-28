@@ -5,14 +5,14 @@ import ApartmentGalleryMobile from "./ApartmentGalleryMobile";
 import ApartmentGalleryDesktop from "./ApartmentGalleryDesktop";
 import UnderMaintenance from "./UnderMaintenance";
 import "./styles/apartment-section.css";
-import Apartment from "./types/Apartment";
+import IAparatment from "./interfaces/IApartment";
 class ApartmentSection extends React.Component {
   state: {
-    apartments: Apartment[];
+    apartments: IAparatment[];
   };
 
-  constructor() {
-    super({});
+  constructor(props: {}) {
+    super(props);
     this.state = {
       apartments: [],
     };
@@ -22,13 +22,13 @@ class ApartmentSection extends React.Component {
     Axios.get(process.env.REACT_APP_SERVER_URL + "properties")
       .then((res) => {
         if (Array.isArray(res.data)) {
-          this.setState({ apartments: res.data as Apartment[] });
+          this.setState({ apartments: res.data as IAparatment[] });
         } else {
           throw Error;
         }
       })
       .catch((err) => {
-        this.setState({ apartments: [] as Apartment[] });
+        this.setState({ apartments: [] as IAparatment[] });
       });
   }
 

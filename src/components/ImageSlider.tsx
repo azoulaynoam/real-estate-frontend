@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/image-slider.css";
-import Apartment from "./types/Apartment";
+import Apartment from "./interfaces/IApartment";
 
 interface ImageSliderType {
   apartment: Apartment;
