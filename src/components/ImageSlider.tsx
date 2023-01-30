@@ -32,7 +32,7 @@ class ImageSlider extends React.Component<ImageSliderType> {
             {slides.length + 1} / {slides_length}
           </div>
           <video className="video" controls>
-            <source src={apartment.video} type="video/MP4" />
+            <source src={apartment.video.path} type="video/MP4" />
           </video>
         </div>
       );

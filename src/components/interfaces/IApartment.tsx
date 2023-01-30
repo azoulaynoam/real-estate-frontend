@@ -11,7 +11,9 @@ type IApartment = {
   size: number;
   price: number;
   status: boolean;
-  video?: string;
+  video?: {
+    path: string;
+  };
   images: {
     path: string;
   }[];

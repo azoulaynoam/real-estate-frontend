@@ -16,49 +16,50 @@ function createForm(params: {
 }) {
   var formData = new FormData();
   try {
-    Object.keys(params.data).forEach((key) => {
-      if (key === "images") {
-        params.data.images.forEach((img: { rawFile: File; path: string }) => {
-          try {
-            if (img && Object.keys(img).includes("rawFile")) {
-              formData.append(key, img.rawFile, img.rawFile.name);
-            } else if (Array.isArray(img)) {
-              img.forEach((nestedImage) => {
-                if (
-                  nestedImage &&
-                  Object.keys(nestedImage).includes("rawFile")
-                ) {
-                  formData.append(
-                    key,
-                    nestedImage.rawFile,
-                    nestedImage.rawFile.name
-                  );
-                } else {
-                  formData.append(key, nestedImage.path);
-                }
-              });
-            } else {
-              formData.append(key, img.path);
+    if (params.data)
+      Object.keys(params.data).forEach((key) => {
+        if (key === "images" && params.data.images) {
+          params.data.images.forEach((img: { rawFile: File; path: string }) => {
+            try {
+              if (img && Object.keys(img).includes("rawFile")) {
+                formData.append(key, img.rawFile, img.rawFile.name);
+              } else if (Array.isArray(img)) {
+                img.forEach((nestedImage) => {
+                  if (
+                    nestedImage &&
+                    Object.keys(nestedImage).includes("rawFile")
+                  ) {
+                    formData.append(
+                      key,
+                      nestedImage.rawFile,
+                      nestedImage.rawFile.name
+                    );
+                  } else {
+                    formData.append(key, nestedImage.path);
+                  }
+                });
+              } else {
+                formData.append(key, img.path);
+              }
+            } catch (err) {
+              console.log(err);
             }
-          } catch (err) {
-            console.log(err);
-          }
-        });
-      } else if (key === "video") {
-        if (
-          params.data.video &&
-          Object.keys(params.data.video).includes("rawFile")
-        )
-          formData.append(
-            key,
-            params.data.video.rawFile,
-            params.data.video.rawFile.name
-          );
-        else formData.append(key, JSON.stringify(params.data.video));
-      } else {
-        formData.append(key, params.data[key]);
-      }
-    });
+          });
+        } else if (key === "video") {
+          if (
+            params.data.video &&
+            Object.keys(params.data.video).includes("rawFile")
+          )
+            formData.append(
+              key,
+              params.data.video.rawFile,
+              params.data.video.rawFile.name
+            );
+          else formData.append(key, JSON.stringify(params.data.video));
+        } else {
+          formData.append(key, params.data[key]);
+        }
+      });
   } catch (err) {
     console.log(err);
   }
@@ -137,10 +138,7 @@ const myDataProvider: DataProvider = {
   update: (resource: string, params: UpdateParams<any>) => {
     let formData = createForm(params);
 
-    if (
-      resource !== "properties" ||
-      (!formData.has("images") && !formData.has("video"))
-    ) {
+    if (resource !== "properties") {
       // fallback to the default implementation
       return dataProvider.update(resource, params);
     }
