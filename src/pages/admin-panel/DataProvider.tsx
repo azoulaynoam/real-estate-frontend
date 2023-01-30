@@ -74,6 +74,15 @@ const dataProvider = restProvider(servicesHost, httpClient);
 
 const myDataProvider: DataProvider = {
   ...dataProvider,
+  getOne: (resource: string, params: any) => {
+    return httpClient(`${servicesHost}/${resource}/${params.id}`, {
+      method: "GET",
+    }).then(({ json }) => {
+      return {
+        data: { ...json, id: json._id },
+      };
+    });
+  },
   getList: (resource: string, params: any) => {
     return httpClient(`${servicesHost}/${resource}`, {
       method: "GET",
@@ -139,9 +148,9 @@ const myDataProvider: DataProvider = {
     return httpClient(`${servicesHost}/${resource}/${params.data.id}`, {
       method: "PUT",
       body: formData,
-    }).then(({ json }) => {
-      return dataProvider.update(resource, params);
-    });
+    }).then(({ json }) => ({
+      data: { ...json, id: json._id },
+    }));
   },
 };
 

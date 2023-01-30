@@ -90,19 +90,17 @@ export const PropertyEdit = (props: { record: IApartment }) => (
       <NumberInput source="size" label="Size in Square Meter" />
       <NumberInput source="price" label="Price in ILS" />
       <FileInput source="video" accept="video/*">
-        <FileField />
+        <FileField source="path" />
       </FileInput>
       <ArrayInput source="images">
-        <SimpleFormIterator>
-          <ImageInput
-            label="Related Images"
-            accept="image/*"
-            placeholder={<p>Drop your file here</p>}
-            source="path"
-          >
-            <ImageField source="path" />
-          </ImageInput>
-        </SimpleFormIterator>
+        <ImageInput
+          label="Related Images"
+          accept="image/*"
+          placeholder={<p>Drop your file here</p>}
+          source="path"
+        >
+          <ImageField source="path" />
+        </ImageInput>
       </ArrayInput>
     </SimpleForm>
   </Edit>
@@ -133,20 +131,18 @@ export const PropertyCreate = (props: { record: IApartment }) => (
       <NumberInput source="size" label="Size in Square Meter" />
       <NumberInput source="price" label="Price in ILS" />
       <FileInput source="video" accept="video/*">
-        <FileField />
+        <FileField source="path" />
       </FileInput>
       <ArrayInput source="images">
-        <SimpleFormIterator>
-          <ImageInput
-            label="Related Images"
-            multiple={true}
-            accept="image/*"
-            placeholder={<p>Drop your file here</p>}
-            source="path"
-          >
-            <ImageField source="path" />
-          </ImageInput>
-        </SimpleFormIterator>
+        <ImageInput
+          label="Related Images"
+          multiple={true}
+          accept="image/*"
+          placeholder={<p>Drop your file here</p>}
+          source="path"
+        >
+          <ImageField source="path" />
+        </ImageInput>
       </ArrayInput>
     </SimpleForm>
   </Create>
