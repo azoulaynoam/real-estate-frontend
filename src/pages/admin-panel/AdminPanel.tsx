@@ -3,7 +3,7 @@ import * as React from "react";
 import { Admin, Resource } from "react-admin";
 import dataProvider from "./DataProvider";
 import authProvider from "./AuthProvider";
-import { PropertyList, PropertyEdit, PropertyCreate } from "./properties";
+import { PropertyList, PropertyEdit, PropertyCreate } from "./FormProvider";
 
 function AdminPanel() {
   return (

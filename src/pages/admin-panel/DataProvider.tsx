@@ -7,7 +7,7 @@ import {
 } from "react-admin";
 import restProvider from "ra-data-json-server";
 
-const servicesHost = "http://localhost:3000";
+const servicesHost = process.env.REACT_APP_SERVER_URL;
 
 function createForm(params: {
   data: {

@@ -19,7 +19,7 @@ class ApartmentSection extends React.Component {
   }
 
   componentDidMount() {
-    Axios.get(process.env.REACT_APP_SERVER_URL + "properties")
+    Axios.get(process.env.REACT_APP_SERVER_URL + "/properties")
       .then((res) => {
         if (Array.isArray(res.data)) {
           this.setState({ apartments: res.data as IAparatment[] });

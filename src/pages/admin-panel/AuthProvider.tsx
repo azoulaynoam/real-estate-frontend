@@ -4,7 +4,7 @@ const authProvider = {
   login: ({ username, password }: { username: string; password: string }) => {
     return axios
       .post(
-        "http://localhost:3000/login",
+        process.env.REACT_APP_SERVER_URL + "/login",
         { username, password },
         { withCredentials: true }
       )
@@ -18,7 +18,7 @@ const authProvider = {
       });
   },
   logout: () => {
-    const request = new Request("http://localhost:3000/logout", {
+    const request = new Request(process.env.REACT_APP_SERVER_URL + "/logout", {
       method: "GET",
       credentials: "include",
     });
