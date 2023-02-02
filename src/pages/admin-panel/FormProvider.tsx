@@ -92,16 +92,16 @@ export const PropertyEdit = (props: { record: IApartment }) => (
       <FileInput source="video" accept="video/*">
         <FileField source="path" />
       </FileInput>
-      <ArrayInput source="images">
-        <ImageInput
-          label="Related Images"
-          accept="image/*"
-          placeholder={<p>Drop your file here</p>}
-          source="path"
-        >
-          <ImageField source="path" />
-        </ImageInput>
-      </ArrayInput>
+      <ImageInput
+        label="Related Images"
+        accept="image/*"
+        placeholder={<p>Drop your file here</p>}
+        source="images"
+        multiple={true}
+        labelMultiple="images"
+      >
+        <ImageField source="path" />
+      </ImageInput>
     </SimpleForm>
   </Edit>
 );

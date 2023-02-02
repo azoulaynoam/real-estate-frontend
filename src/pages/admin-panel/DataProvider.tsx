@@ -22,23 +22,10 @@ function createForm(params: {
           params.data.images.forEach((img: { rawFile: File; path: string }) => {
             try {
               if (img && Object.keys(img).includes("rawFile")) {
+                console.log(1);
                 formData.append(key, img.rawFile, img.rawFile.name);
-              } else if (Array.isArray(img)) {
-                img.forEach((nestedImage) => {
-                  if (
-                    nestedImage &&
-                    Object.keys(nestedImage).includes("rawFile")
-                  ) {
-                    formData.append(
-                      key,
-                      nestedImage.rawFile,
-                      nestedImage.rawFile.name
-                    );
-                  } else {
-                    formData.append(key, nestedImage.path);
-                  }
-                });
               } else {
+                console.log(3);
                 formData.append(key, img.path);
               }
             } catch (err) {
@@ -55,7 +42,7 @@ function createForm(params: {
               params.data.video.rawFile,
               params.data.video.rawFile.name
             );
-          else formData.append(key, JSON.stringify(params.data.video));
+          else formData.append(key, params.data.video);
         } else {
           formData.append(key, params.data[key]);
         }
