@@ -13,7 +13,6 @@ import {
   NumberField,
   BooleanField,
   ArrayInput,
-  SimpleFormIterator,
   ImageInput,
   ArrayField,
   SimpleForm,
@@ -21,7 +20,9 @@ import {
   SingleFieldList,
   FileInput,
   FileField,
+  useRecordContext,
 } from "react-admin";
+import ImageSliderField from "./components/fields/imageSliderField";
 
 var sell_rent = [
   { id: "sell", name: "Sell" },
@@ -52,12 +53,7 @@ export const PropertyList = (props: { data: IApartment }) => (
         source="price"
         options={{ style: "currency", currency: "ILS" }}
       />
-      <FileField source="video" title="Video" />
-      <ArrayField source="images">
-        <SingleFieldList>
-          <ImageField source="path" />
-        </SingleFieldList>
-      </ArrayField>
+      <ImageSliderField source="media" images="images" video="video" />
       <EditButton />
     </Datagrid>
   </List>

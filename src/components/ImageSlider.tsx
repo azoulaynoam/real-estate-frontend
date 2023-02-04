@@ -3,17 +3,21 @@ import "./styles/image-slider.css";
 import Apartment from "./interfaces/IApartment";
 
 interface ImageSliderType {
-  apartment: Apartment;
+  apartment: Apartment | { path: string }[];
+  width?: number;
 }
 
 class ImageSlider extends React.Component<ImageSliderType> {
   sliders: JSX.Element[] = [];
   state: {
-    apartment?: Apartment;
+    apartment: Apartment | { path: string }[];
     index: number;
   };
 
-  constructor(props: { apartment: Apartment; width?: number }) {
+  constructor(props: {
+    apartment: Apartment | { path: string }[];
+    width?: number;
+  }) {
     super(props);
     this.state = {
       apartment: props.apartment,
@@ -21,10 +25,13 @@ class ImageSlider extends React.Component<ImageSliderType> {
     };
   }
 
-  pharse_to_slides(apartment: Apartment) {
+  pharse_to_slides(apartment: Apartment | { path: string }[]) {
     var slides = [];
-    var slides_length = apartment.images.length;
-    if (apartment.video) {
+    var slides_length = Array.isArray(apartment)
+      ? apartment.length
+      : apartment.images.length + (apartment.video ? 1 : 0);
+
+    if (!Array.isArray(apartment) && apartment.video) {
       slides_length++;
       slides.push(
         <div className="slides">
@@ -38,7 +45,9 @@ class ImageSlider extends React.Component<ImageSliderType> {
       );
     }
 
-    for (var image of apartment.images) {
+    const images = Array.isArray(apartment) ? apartment : apartment.images;
+
+    for (var image of images) {
       slides.push(
         <div className="slides fade">
           <div className="numbertext">
