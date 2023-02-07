@@ -2,7 +2,7 @@ import { useRecordContext } from "react-admin";
 import ImageSlider from "../../../../components/ImageSlider";
 import IApartment from "../../../../components/interfaces/IApartment";
 
-const imageSliderField = ({
+const ImageSliderField = ({
   source,
   images,
   video,
@@ -11,12 +11,14 @@ const imageSliderField = ({
   images: string;
   video: string;
 }) => {
-  const record = useRecordContext();
+  const useRecord = useRecordContext();
   return (
     <ImageSlider
-      apartment={{ images: record[images], video: record[video] } as IApartment}
+      apartment={
+        { images: useRecord[images], video: useRecord[video] } as IApartment
+      }
     />
   );
 };
 
-export default imageSliderField;
+export default ImageSliderField;
