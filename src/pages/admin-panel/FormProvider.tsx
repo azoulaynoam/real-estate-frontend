@@ -14,13 +14,10 @@ import {
   BooleanField,
   ArrayInput,
   ImageInput,
-  ArrayField,
   SimpleForm,
   ImageField,
-  SingleFieldList,
   FileInput,
   FileField,
-  useRecordContext,
 } from "react-admin";
 import ImageSliderField from "./components/fields/imageSliderField";
 

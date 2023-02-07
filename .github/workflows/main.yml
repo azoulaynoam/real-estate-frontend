@@ -24,8 +24,6 @@ jobs:
         uses: borales/actions-yarn@v4
         with:
           cmd: build # will run `yarn build` command
-      - name: Generate deployment package
-        run: zip -r deploy.zip ./build -x '*.git*'
       - name: Connect to S3
         uses: aws-actions/configure-aws-credentials@v1
         with:

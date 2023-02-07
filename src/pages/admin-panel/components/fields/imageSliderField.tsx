@@ -1,8 +1,8 @@
-import { useRecordContext, UseRecordContextParams } from "react-admin";
+import { useRecordContext } from "react-admin";
 import ImageSlider from "../../../../components/ImageSlider";
 import IApartment from "../../../../components/interfaces/IApartment";
 
-export default ({
+const imageSliderField = ({
   source,
   images,
   video,
@@ -18,3 +18,5 @@ export default ({
     />
   );
 };
+
+export default imageSliderField;
