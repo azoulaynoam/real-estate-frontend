@@ -66,9 +66,6 @@ window.addEventListener(
       session: {
         persistent: true,
       },
-      feedback: {
-        url: "https://www.google.com",
-      },
     });
   },
   false
