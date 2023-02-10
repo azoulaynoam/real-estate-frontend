@@ -6,7 +6,11 @@ import { PropertyList, PropertyEdit, PropertyCreate } from "./FormProvider";
 
 function AdminPanel() {
   return (
-    <Admin dataProvider={dataProvider} authProvider={authProvider}>
+    <Admin
+      dataProvider={dataProvider}
+      authProvider={authProvider}
+      basename="/admin"
+    >
       <Resource
         name="properties"
         list={PropertyList}
