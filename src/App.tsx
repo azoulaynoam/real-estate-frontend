@@ -10,7 +10,7 @@ class App extends React.Component {
         <Router>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/Admin" element={<AdminPanel />} />
+            <Route path="/admin/*" element={<AdminPanel />} />
           </Routes>
         </Router>
       </div>
