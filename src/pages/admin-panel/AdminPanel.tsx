@@ -1,4 +1,3 @@
-// in app.js
 import { Admin, Resource } from "react-admin";
 import dataProvider from "./DataProvider";
 import authProvider from "./AuthProvider";
@@ -9,7 +8,7 @@ function AdminPanel() {
     <Admin
       dataProvider={dataProvider}
       authProvider={authProvider}
-      basename="/admin"
+      basename="/Admin"
     >
       <Resource
         name="properties"
