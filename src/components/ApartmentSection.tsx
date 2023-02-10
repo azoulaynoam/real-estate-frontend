@@ -19,6 +19,7 @@ class ApartmentSection extends React.Component {
   }
 
   componentDidMount() {
+    console.log(process.env.REACT_APP_SERVER_URL);
     Axios.get(process.env.REACT_APP_SERVER_URL + "/properties")
       .then((res) => {
         if (Array.isArray(res.data)) {
