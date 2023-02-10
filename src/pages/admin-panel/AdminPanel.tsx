@@ -9,7 +9,7 @@ function AdminPanel() {
     <Admin
       dataProvider={dataProvider}
       authProvider={authProvider}
-      basename="/admin"
+      basename="/admin#"
     >
       <Resource
         name="properties"
