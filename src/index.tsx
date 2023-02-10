@@ -22,6 +22,8 @@ window.addEventListener(
       icon: {
         circular: true,
         img: "accessible",
+        useEmojis: false,
+        backgroundColor: "rgba(0, 188, 203, 0.7)",
       },
       speechToTextLang: i18n.dir() === "rtl" ? "he" : "en-US",
       labels: {
