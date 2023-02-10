@@ -6,6 +6,7 @@ import ApartmentGalleryDesktop from "./ApartmentGalleryDesktop";
 import UnderMaintenance from "./UnderMaintenance";
 import "./styles/apartment-section.css";
 import IAparatment from "./interfaces/IApartment";
+import server_url from "../config";
 class ApartmentSection extends React.Component {
   state: {
     apartments: IAparatment[];
@@ -19,8 +20,7 @@ class ApartmentSection extends React.Component {
   }
 
   componentDidMount() {
-    console.log(process.env.REACT_APP_SERVER_URL);
-    Axios.get(process.env.REACT_APP_SERVER_URL + "/properties")
+    Axios.get(server_url + "/properties")
       .then((res) => {
         if (Array.isArray(res.data)) {
           this.setState({ apartments: res.data as IAparatment[] });

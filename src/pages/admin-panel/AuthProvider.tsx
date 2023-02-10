@@ -1,10 +1,11 @@
 import axios, { AxiosError } from "axios";
+import server_url from "../../config";
 
 const authProvider = {
   login: ({ username, password }: { username: string; password: string }) => {
     return axios
       .post(
-        process.env.REACT_APP_SERVER_URL + "/login",
+        server_url + "/login",
         { username, password },
         { withCredentials: true }
       )
@@ -18,7 +19,7 @@ const authProvider = {
       });
   },
   logout: () => {
-    const request = new Request(process.env.REACT_APP_SERVER_URL + "/logout", {
+    const request = new Request(server_url + "/logout", {
       method: "GET",
       credentials: "include",
     });

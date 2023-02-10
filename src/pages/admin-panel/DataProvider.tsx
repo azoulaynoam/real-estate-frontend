@@ -6,8 +6,7 @@ import {
   fetchUtils,
 } from "react-admin";
 import restProvider from "ra-data-json-server";
-
-const servicesHost = process.env.REACT_APP_SERVER_URL;
+import server_url from "../../config";
 
 function createForm(params: {
   data: {
@@ -58,12 +57,12 @@ const httpClient = (url: string, options: fetchUtils.Options = {}) => {
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = restProvider(servicesHost, httpClient);
+const dataProvider = restProvider(server_url, httpClient);
 
 const myDataProvider: DataProvider = {
   ...dataProvider,
   getOne: (resource: string, params: any) => {
-    return httpClient(`${servicesHost}/${resource}/${params.id}`, {
+    return httpClient(`${server_url}/${resource}/${params.id}`, {
       method: "GET",
     }).then(({ json }) => {
       return {
@@ -72,7 +71,7 @@ const myDataProvider: DataProvider = {
     });
   },
   getList: (resource: string, params: any) => {
-    return httpClient(`${servicesHost}/${resource}`, {
+    return httpClient(`${server_url}/${resource}`, {
       method: "GET",
     }).then(({ json }) => {
       return {
@@ -82,7 +81,7 @@ const myDataProvider: DataProvider = {
     });
   },
   delete: (resource: string, params: any) => {
-    return httpClient(`${servicesHost}/${resource}/${params.id}`, {
+    return httpClient(`${server_url}/${resource}/${params.id}`, {
       method: "DELETE",
     }).then(({ json }) => {
       return {
@@ -94,7 +93,7 @@ const myDataProvider: DataProvider = {
   deleteMany: (resource: string, params: DeleteManyParams) =>
     Promise.all(
       params.ids.map((id: string) =>
-        httpClient(`${servicesHost}/${resource}/${id}`, {
+        httpClient(`${server_url}/${resource}/${id}`, {
           method: "DELETE",
         })
       )
@@ -115,7 +114,7 @@ const myDataProvider: DataProvider = {
       return dataProvider.create(resource, params);
     }
 
-    return httpClient(`${servicesHost}/${resource}`, {
+    return httpClient(`${server_url}/${resource}`, {
       method: "POST",
       body: formData,
     }).then(({ json }) => ({
@@ -130,7 +129,7 @@ const myDataProvider: DataProvider = {
       return dataProvider.update(resource, params);
     }
 
-    return httpClient(`${servicesHost}/${resource}/${params.data.id}`, {
+    return httpClient(`${server_url}/${resource}/${params.data.id}`, {
       method: "PUT",
       body: formData,
     }).then(({ json }) => ({
