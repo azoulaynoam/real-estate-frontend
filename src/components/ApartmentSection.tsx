@@ -1,6 +1,6 @@
 import React from "react";
 import Axios from "axios";
-import i18n from "./translator";
+import i18n from "../translator";
 import ApartmentGalleryMobile from "./ApartmentGalleryMobile";
 import ApartmentGalleryDesktop from "./ApartmentGalleryDesktop";
 import UnderMaintenance from "./UnderMaintenance";

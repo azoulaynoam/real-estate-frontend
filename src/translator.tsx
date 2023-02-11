@@ -59,6 +59,7 @@ i18n
           screenReader: "Screen Reader",
           textToSpeech: "Text To Speech",
           underlineLinks: "Underline Links",
+          sold: "Sold",
         },
       },
       he: {
@@ -108,6 +109,7 @@ i18n
           screenReader: "קורא מסך",
           textToSpeech: "הפוך טקסט לדיבור",
           underlineLinks: "קו תחתון לקישורים",
+          sold: "נמכר",
         },
       },
     },

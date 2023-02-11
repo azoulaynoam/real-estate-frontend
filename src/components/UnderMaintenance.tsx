@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "./translator";
+import i18n from "../translator";
 import "./styles/under-maintenance.css";
 
 function UnderMaintenance() {

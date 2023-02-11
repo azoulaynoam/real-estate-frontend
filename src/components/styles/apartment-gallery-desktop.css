@@ -75,6 +75,29 @@
   filter: drop-shadow(1px 1px 2px #10123c);
 }
 
+.apartments > .apartment > .right > .price-tag-sold {
+  font-size: 18pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  -webkit-filter: drop-shadow(1px 1px 2px #10123c);
+  filter: drop-shadow(1px 1px 2px #10123c);
+  -webkit-text-decoration-line: line-through; /* Safari */
+  text-decoration-line: line-through;
+}
+
+.apartments > .apartment > .right > .sold {
+  font-size: 14pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  -webkit-filter: drop-shadow(1px 1px 2px #10123c);
+  filter: drop-shadow(1px 1px 2px #10123c);
+  color: #ffffff;
+}
+
 .apartments > .apartment > .info-container > .icon-with-value {
   margin-right: 10px;
 }

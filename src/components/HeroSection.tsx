@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "./translator";
+import i18n from "../translator";
 import VizSensor from "react-visibility-sensor";
 import "./styles/hero-section.css";
 

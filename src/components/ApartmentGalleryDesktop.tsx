@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "./translator";
+import i18n from "../translator";
 import IconWithValue from "./IconWithValue";
 import ImageSlider from "./ImageSlider";
 import "./styles/apartment-gallery-desktop.css";
@@ -23,11 +23,11 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
     };
   }
 
-  createPriceTag(price: string) {
-    return price.toLocaleString() + " ₪";
+  createPriceTag(price: number) {
+    return price.toLocaleString("en-US") + " ₪";
   }
 
-  apartment = (props: { apartment: IApartment; index: number }) => {
+  apartment = (props: { apartment: IApartment }) => {
     let lang;
     try {
       lang = i18n.language.split("-")[0];
@@ -80,9 +80,14 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
           </div>
         </div>
         <div className="right">
-          <i className="price-tag">
-            {this.createPriceTag(String(props.apartment.price))}
+          <i
+            className={props.apartment.status ? "price-tag" : "price-tag-sold"}
+          >
+            {this.createPriceTag(props.apartment.price)}
           </i>
+          {props.apartment.status ? null : (
+            <b className="sold">{i18n.t("sold")}</b>
+          )}
         </div>
       </div>
     );
@@ -102,17 +107,10 @@ class ApartmentGalleryDesktop extends React.Component<ApartmentGalleryDesktopTyp
 
   render() {
     const apartments: JSX.Element[] = [];
-    let apartmentCounter = 0;
 
     this.state.apartments.forEach((apartment: IApartment) => {
-      apartments.push(
-        <this.apartment
-          index={apartmentCounter}
-          apartment={apartment}
-        ></this.apartment>
-      );
+      apartments.push(<this.apartment apartment={apartment}></this.apartment>);
     });
-    apartmentCounter++;
 
     return (
       <div className="gallery">

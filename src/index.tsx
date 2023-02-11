@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { Accessibility } from "accessibility";
-import i18n from "./components/translator";
+import i18n from "./translator";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

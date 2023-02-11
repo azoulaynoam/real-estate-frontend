@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "./translator";
+import i18n from "../translator";
 import ImageSlider from "./ImageSlider";
 import IconWithValue from "./IconWithValue";
 import "./styles/apartment-gallery-mobile.css";
@@ -35,8 +35,8 @@ class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType>
     }
   };
 
-  createPriceTag(price: string) {
-    return price.toLocaleString() + " ₪";
+  createPriceTag(price: number) {
+    return price.toLocaleString("en-US") + " ₪";
   }
 
   render() {
@@ -86,9 +86,8 @@ class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType>
               {lang === "en" ? apartment.free_text_en : apartment.free_text_he}
             </i>
           </div>
-          <i className="price-tag">
-            {this.createPriceTag(String(apartment.price))}
-          </i>
+          <i className="price-tag">{this.createPriceTag(apartment.price)}</i>
+          {apartment.status ? null : <div className="sold">Sold</div>}
         </div>
         <div className="right arrow" onClick={this.rightArrow}>
           <i className="fas fa-angle-right"></i>

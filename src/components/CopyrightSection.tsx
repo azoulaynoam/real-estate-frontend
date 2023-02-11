@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "./translator";
+import i18n from "../translator";
 import "./styles/copyright-section.css";
 
 class CopyrightSection extends React.Component {

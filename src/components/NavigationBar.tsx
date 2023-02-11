@@ -1,5 +1,5 @@
 import React from "react";
-import i18n from "./translator";
+import i18n from "../translator";
 import "./styles/navigation-bar.css";
 import { US, IL } from "country-flag-icons/react/1x1";
 
