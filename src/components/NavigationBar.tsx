@@ -120,7 +120,7 @@ class NavigationBar extends React.Component {
         <div className="navigation-bar">
           <div className="left-column">
             <div className="icon">
-              <a href="https://wa.me/+972-(050)2364585">
+              <a title="WhatsApp" href="https://wa.me/+972-(050)2364585">
                 <i className="fab fa-whatsapp"></i>
               </a>
             </div>

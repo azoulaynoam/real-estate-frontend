@@ -1,7 +1,7 @@
 import { ObjectId } from "mongoose";
 
 type IApartment = {
-  _id?: ObjectId | string;
+  _id: ObjectId | string;
   action: string;
   free_text_en?: string;
   free_text_he?: string;

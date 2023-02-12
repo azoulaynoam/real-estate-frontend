@@ -53,7 +53,7 @@ class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType>
           <i className="fas fa-angle-left"></i>
         </div>
         <div className="apartment-card">
-          <ImageSlider apartment={apartment} />
+          <ImageSlider apartment={apartment} key={String(apartment._id)} />
           <div className="info-container">
             <IconWithValue
               icon="fas fa-door-open"

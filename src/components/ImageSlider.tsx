@@ -4,23 +4,18 @@ import Apartment from "./interfaces/IApartment";
 
 interface ImageSliderType {
   apartment: Apartment | { path: string }[];
-  width?: number;
 }
 
 class ImageSlider extends React.Component<ImageSliderType> {
-  sliders: JSX.Element[] = [];
   state: {
-    apartment: Apartment | { path: string }[];
+    sliders: JSX.Element[];
     index: number;
   };
 
-  constructor(props: {
-    apartment: Apartment | { path: string }[];
-    width?: number;
-  }) {
+  constructor(props: { apartment: Apartment | { path: string }[] }) {
     super(props);
     this.state = {
-      apartment: props.apartment,
+      sliders: this.pharse_to_slides(this.props.apartment),
       index: 0,
     };
   }
@@ -63,17 +58,10 @@ class ImageSlider extends React.Component<ImageSliderType> {
     return slides;
   }
 
-  componentDidUpdate(prevProps: { apartment: Apartment }) {
-    if (this.state.apartment !== prevProps.apartment) {
-      this.setState({ index: 0 });
-    }
-  }
-
   render() {
-    this.sliders = this.pharse_to_slides(this.props.apartment);
     return (
       <div className="image-slider">
-        {this.sliders[this.state.index]}
+        {this.state.sliders[this.state.index]}
         <div className="prev" onClick={this.prev}>
           <i>&#10094;</i>
         </div>
@@ -88,12 +76,12 @@ class ImageSlider extends React.Component<ImageSliderType> {
     if (this.state.index - 1 >= 0) {
       this.setState({ index: this.state.index - 1 });
     } else {
-      this.setState({ index: this.sliders.length - 1 });
+      this.setState({ index: this.state.sliders.length - 1 });
     }
   };
 
   next = () => {
-    if (this.state.index + 1 <= this.sliders.length - 1) {
+    if (this.state.index + 1 <= this.state.sliders.length - 1) {
       this.setState({ index: this.state.index + 1 });
     } else {
       this.setState({ index: 0 });
