@@ -86,8 +86,10 @@ class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType>
               {lang === "en" ? apartment.free_text_en : apartment.free_text_he}
             </i>
           </div>
-          <i className="price-tag">{this.createPriceTag(apartment.price)}</i>
-          {apartment.status ? null : <div className="sold">Sold</div>}
+          <i className={apartment.status ? "price-tag" : "price-tag-sold"}>
+            {this.createPriceTag(apartment.price)}
+          </i>
+          {apartment.status ? null : <b className="sold">{i18n.t("sold")}</b>}
         </div>
         <div className="right arrow" onClick={this.rightArrow}>
           <i className="fas fa-angle-right"></i>

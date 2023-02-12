@@ -1,6 +1,6 @@
 .apartment-card {
-  height: 550px;
-  width: 270px;
+  height: 37em;
+  width: 17em;
   background-color: rgba(0, 188, 203, 0.5);
   -webkit-filter: drop-shadow(1px 1px 1px #10123c);
   filter: drop-shadow(1px 1px 1px #10123c);
@@ -37,4 +37,27 @@
   color: #ffffff;
   -webkit-filter: drop-shadow(1px 1px 2px #10123c);
   filter: drop-shadow(1px 1px 2px #10123c);
+}
+
+.apartment-card > .price-tag-sold {
+  font-size: 18pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  -webkit-filter: drop-shadow(1px 1px 2px #10123c);
+  filter: drop-shadow(1px 1px 2px #10123c);
+  -webkit-text-decoration-line: line-through; /* Safari */
+  text-decoration-line: line-through;
+}
+
+.apartment-card > .sold {
+  font-size: 14pt;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  -webkit-filter: drop-shadow(1px 1px 2px #10123c);
+  filter: drop-shadow(1px 1px 2px #10123c);
+  color: #ffffff;
 }
