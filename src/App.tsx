@@ -10,7 +10,7 @@ class App extends React.Component {
         <Router basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<Main />} />
-            <Route path="/Admin/*" element={<AdminPanel />} />
+            <Route path="/Admin" element={<AdminPanel />} />
           </Routes>
         </Router>
       </div>
