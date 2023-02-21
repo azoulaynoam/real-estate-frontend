@@ -7,7 +7,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Router>
+        <Router basename={window.location.pathname.replace(/(\/[^/]+)$/, "")}>
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/Admin/*" element={<AdminPanel />} />
