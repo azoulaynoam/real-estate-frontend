@@ -1,10 +1,6 @@
 import React from "react";
 import i18n from "../translator";
 import "./styles/about-me.css";
-
-interface AboutMeProprs {
-  contentVisible: boolean;
-}
 class AboutMe extends React.Component {
   state = {
     contentVisible: false,
