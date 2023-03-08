@@ -39,6 +39,27 @@ class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType>
     return price.toLocaleString("en-US") + " ₪";
   }
 
+  touchStart: number | null = null;
+  touchEnd: number | null = null;
+  minSwipeDistance = 50;
+
+  onTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    this.touchEnd = null;
+    this.touchStart = e.targetTouches[0].clientX;
+  };
+
+  onTouchMove = (e: React.TouchEvent<HTMLDivElement>) =>
+    (this.touchEnd = e.targetTouches[0].clientX);
+
+  onTouchEnd = () => {
+    if (!this.touchStart || !this.touchEnd) return;
+    const distance = this.touchStart - this.touchEnd;
+    const isLeftSwipe = distance > this.minSwipeDistance;
+    const isRightSwipe = distance < -this.minSwipeDistance;
+    if (isLeftSwipe) this.rightArrow();
+    if (isRightSwipe) this.leftArrow();
+  };
+
   render() {
     let lang;
     try {
@@ -48,7 +69,12 @@ class ApartmentGalleryMobile extends React.Component<ApartmentGalleryMobileType>
     }
     const apartment = this.state.apartments[this.state.index];
     return (
-      <div className="gallery">
+      <div
+        className="gallery"
+        onTouchStart={this.onTouchStart}
+        onTouchMove={this.onTouchMove}
+        onTouchEnd={this.onTouchEnd}
+      >
         <div className="left arrow" onClick={this.leftArrow}>
           <i className="fas fa-angle-left"></i>
         </div>
